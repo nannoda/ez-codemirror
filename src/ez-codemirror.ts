@@ -86,6 +86,16 @@ export class SimpleCodeMirror {
         return out;
     }
 
+    set content(text: string){
+        this.view.dispatch({
+            changes: {
+                from: 0,
+                to: this.view.state.doc.length,
+                insert: text
+            }
+        })
+    }
+
     get lines(){
         return this.view.state.doc.toJSON();
     }
